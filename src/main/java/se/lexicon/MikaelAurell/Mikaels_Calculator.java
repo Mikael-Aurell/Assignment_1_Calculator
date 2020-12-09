@@ -2,12 +2,11 @@ package se.lexicon.MikaelAurell;
 
 import java.util.Scanner;
 
-public class App
-{
-    public static void main( String[] args )
-    {
+public class Mikaels_Calculator {
+    public static void main(String[] args) {
+        System.out.println("-----Welcome to My Calculator-----");
 
-        /*boolean finish = false;
+        boolean finish = false;
 
         while (!finish) {
 
@@ -28,7 +27,8 @@ public class App
 
             switch (myChar) {
                 case "+":
-                    result = number1 + number2;
+                    result = addition(number1,number2);
+                    //result = number1 + number2;
                     break;
                 case "-":
                     result = number1 - number2;
@@ -47,7 +47,7 @@ public class App
                 default:
                     System.out.println(myChar + "is not supported");
             }
-            System.out.println(result);
+            System.out.println("The result are:" + result+".");
 
             Scanner scannerFinish = new Scanner(System.in);
             System.out.print("Would you like to calculate again? (Y/N) ");
@@ -57,6 +57,10 @@ public class App
             if ( inputFinishUpper.equals("N")){
                 finish = true;
             }
-        }*/
+        }
+    }
+    public static double addition(double number1,double number2) {
+        return number1 + number2;
+
     }
 }
