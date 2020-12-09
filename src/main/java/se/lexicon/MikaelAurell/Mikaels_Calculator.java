@@ -7,18 +7,36 @@ public class Mikaels_Calculator {
         System.out.println("-----Welcome to My Calculator-----");
 
         boolean finish = false;
+        Scanner scannerTemp = new Scanner(System.in);
+        String numberCheck;
 
         while (!finish) {
 
+            //Checks if there is only digits at input1
+            do {
+                System.out.print("Enter Number1: ");
+                numberCheck = scannerTemp.nextLine();
+            }
+            while(!numberCheckFunction(numberCheck));
 
-            Scanner scanner1 = new Scanner(System.in);
-            System.out.print("Enter Number1: ");
-            double number1 = scanner1.nextDouble();
+            //Input1 is ok and is saved in number1
 
-            Scanner scanner2 = new Scanner(System.in);
-            System.out.print("Enter Number2: ");
-            double number2 = scanner2.nextDouble();
+            double number1 = Double.parseDouble(numberCheck);
 
+            //Checks if there is only digits at input2
+            do {
+                //Scanner scannerTemp = new Scanner(System.in);
+                System.out.print("Enter Number2: ");
+                numberCheck = scannerTemp.nextLine();
+            }
+            while(!numberCheckFunction(numberCheck));
+
+            //Input2 is ok and is saved in number2
+            //Scanner scanner2 = new Scanner(System.in);
+            double number2 = Double.parseDouble(numberCheck);
+
+
+            boolean divideByZero = false;
             double result = 0;
 
             Scanner scannerOperator = new Scanner(System.in);
@@ -27,19 +45,19 @@ public class Mikaels_Calculator {
 
             switch (myChar) {
                 case "+":
-                    result = addition(number1,number2);
-                    //result = number1 + number2;
+                    result = addition(number1, number2);
                     break;
                 case "-":
-                    result = number1 - number2;
+                    result = subtraction(number1, number2);
                     break;
                 case "*":
-                    result = number1 * number2;
+                    result = multiplication(number1, number2);
                     break;
                 case "/":
                     if (number2 != 0) {
-                        result = number1 / number2;
+                        result = division(number1, number2);
                     } else {
+                        divideByZero = true;
                         System.out.println("Divide by zero not allowed!");
                     }
                     break;
@@ -47,20 +65,51 @@ public class Mikaels_Calculator {
                 default:
                     System.out.println(myChar + "is not supported");
             }
-            System.out.println("The result are:" + result+".");
+
+            if (!divideByZero) {
+                System.out.println("The result are: " + (String.format("%.0g", result)));
+            }
 
             Scanner scannerFinish = new Scanner(System.in);
             System.out.print("Would you like to calculate again? (Y/N) ");
             String inputFinish = scannerFinish.nextLine();
             String inputFinishUpper = inputFinish.toUpperCase();
 
-            if ( inputFinishUpper.equals("N")){
+            if (inputFinishUpper.equals("N")) {
                 finish = true;
             }
         }
+        System.out.println();
+        System.out.println("Thank you for using my Calculator!");
     }
-    public static double addition(double number1,double number2) {
-        return number1 + number2;
 
+    //---Methods here--------------------------------------------------------
+    public static double addition(double number1, double number2) {
+        return number1 + number2;
+    }
+
+    public static double subtraction(double number1, double number2) {
+        return number1 - number2;
+    }
+
+    public static double multiplication(double number1, double number2) {
+        return number1 * number2;
+    }
+
+    public static double division(double number1, double number2) {
+        return number1 / number2;
+    }
+
+    public static boolean numberCheckFunction(String numberCheck) {
+        for (int i = 0; i < (numberCheck.length()); i++) {
+            if (!((numberCheck.charAt(i) >= '0') && (numberCheck.charAt(i) <= '9'))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
+
+
+
+
