@@ -11,7 +11,7 @@ public class App {
         System.out.println("-----Welcome to My Calculator-----");
 
         boolean finish = false;
-        Scanner scannerTemp = new Scanner(System.in);
+        //Scanner scannerTemp = new Scanner(System.in);
         String numberCheck;
 
         Calculate interfaceImp = new CalculateImplementation();
@@ -21,7 +21,7 @@ public class App {
             //Checks if there is only digits at input1
             do {
                 System.out.print("Enter Number1: ");
-                numberCheck = Calculate.takeInput(); //Scanner from interface
+                numberCheck = Calculate.TakeInput(); //Scanner from interface
             }
             while (!numberCheckFunction(numberCheck));
 
@@ -33,7 +33,7 @@ public class App {
             do {
                 //Scanner scannerTemp = new Scanner(System.in);
                 System.out.print("Enter Number2: ");
-                numberCheck = Calculate.takeInput(); //Scanner from interface
+                numberCheck = Calculate.TakeInput(); //Scanner from interface
             }
             while (!numberCheckFunction(numberCheck));
 
